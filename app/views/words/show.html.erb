@@ -12,7 +12,6 @@
 <%= form_with(model: [@word, @comment], url: create_comment_word_path(@word), local: true) do |form| %>
   <%= form.label :content, 'コメント' %>
   <%= form.text_area :content %>
-
   <%= form.submit 'コメント追加' %>
 <% end %>
 

@@ -1,5 +1,5 @@
 <!-- app/views/words/index.html.erb -->
-<h1>単語一覧</h1>
+<h1><%= link_to '単語一覧', root_path %></h1>
 
 <%= form_with(url: words_path, method: :get) do |form| %>
   <%= form.label :search, '検索' %>
