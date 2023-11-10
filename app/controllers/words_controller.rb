@@ -2,7 +2,21 @@ class WordsController < ApplicationController
   before_action :set_word, only: [:show]
 
   def index
-    @words = Word.all
+    @words = if params[:search]
+               Word.where('term LIKE ?', "%#{params[:search]}%")
+             else
+               Word.all
+             end
+  end
+
+  def search
+    @words = if params[:search]
+               Word.where('term LIKE ?', "%#{params[:search]}%")
+             else
+               Word.all
+             end
+
+    render :index
   end
 
   def show
@@ -42,12 +56,13 @@ class WordsController < ApplicationController
     @comment = Comment.new
   end
 
+
   def create_comment
     @word = Word.find(params[:id])
     @comment = @word.comments.new(comment_params)
 
     if @comment.save
-      redirect_to @word, notice: 'コメントが追加されました。'
+      redirect_to word_path(@word), notice: 'コメントが追加されました。'
     else
       @comments = @word.comments
       render :show
