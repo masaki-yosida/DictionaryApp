@@ -36,6 +36,25 @@ class WordsController < ApplicationController
     end
   end
 
+  def show
+    @word = Word.find(params[:id])
+    @comments = @word.comments
+    @comment = Comment.new
+  end
+
+  def create_comment
+    @word = Word.find(params[:id])
+    @comment = @word.comments.new(comment_params)
+
+    if @comment.save
+      redirect_to @word, notice: 'コメントが追加されました。'
+    else
+      @comments = @word.comments
+      render :show
+    end
+  end
+  
+
   private
 
   def set_word
@@ -45,4 +64,11 @@ class WordsController < ApplicationController
   def word_params
     params.require(:word).permit(:term, :definition)
   end
+
+  def comment_params
+    params.require(:comment).permit(:content)
+  end
 end
+
+
+

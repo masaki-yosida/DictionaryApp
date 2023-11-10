@@ -1,5 +1,20 @@
 <!-- app/views/words/show.html.erb -->
 <h1><%= @word.term %></h1>
 <p><%= @word.definition %></p>
+
+<h2>コメント</h2>
+<ul>
+  <% @comments.each do |comment| %>
+    <li><%= comment.content %></li>
+  <% end %>
+</ul>
+
+<%= form_with(model: [@word, @comment], url: create_comment_word_path(@word), local: true) do |form| %>
+  <%= form.label :content, 'コメント' %>
+  <%= form.text_area :content %>
+
+  <%= form.submit 'コメント追加' %>
+<% end %>
+
 <%= link_to '編集', edit_word_path(@word) %> |
 <%= link_to '一覧に戻る', words_path %>
