@@ -1,0 +1,8 @@
+<h1>単語一覧</h1>
+<ul>
+  <% @words.each do |word| %>
+    <li><%= link_to word.term, word %></li>
+  <% end %>
+</ul>
+<%= link_to '新規単語追加', new_word_path %>
+
