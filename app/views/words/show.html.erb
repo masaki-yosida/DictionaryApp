@@ -1,3 +1,5 @@
+<!-- app/views/words/show.html.erb -->
 <h1><%= @word.term %></h1>
 <p><%= @word.definition %></p>
+<%= link_to '編集', edit_word_path(@word) %> |
 <%= link_to '一覧に戻る', words_path %>

@@ -1,3 +1,4 @@
+<!-- app/views/words/_form.html.erb -->
 <%= form_with(model: @word, local: true) do |form| %>
   <%= form.label :term, '単語' %>
   <%= form.text_field :term %>
@@ -5,5 +6,5 @@
   <%= form.label :definition, '定義' %>
   <%= form.text_area :definition %>
 
-  <%= form.submit '追加' %>
+  <%= form.submit '保存' %>
 <% end %>
