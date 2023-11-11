@@ -1,10 +1,17 @@
 <!-- app/views/words/_form.html.erb -->
-<%= form_with(model: @word, local: true) do |form| %>
-  <%= form.label :term, '単語' %>
-  <%= form.text_field :term %>
 
-  <%= form.label :definition, '定義' %>
-  <%= form.text_area :definition %>
+<%= form_with(model: @word, url: words_path, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :word, '単語' %>
+    <%= form.text_field :word %>
+  </div>
 
-  <%= form.submit '保存' %>
+  <div class="field">
+    <%= form.label :definition, '定義' %>
+    <%= form.text_area :definition %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit '追加する' %>
+  </div>
 <% end %>
