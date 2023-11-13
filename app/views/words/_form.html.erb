@@ -1,17 +1,22 @@
-<%= form_with(model: @word, url: words_path, local: true) do |form| %>
-  <div class="form-container">
-    <div class="field">
-      <%= form.label :word, '単語' %>
-      <%= form.text_field :word, class: 'input-field' %>
-    </div>
+<!-- app/views/words/_form.html.erb -->
 
-    <div class="field">
-      <%= form.label :definition, '定義' %>
-      <%= form.text_area :definition, class: 'input-field' %>
-    </div>
+<%= form_with(model: @word, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :term, '単語' %>
+    <%= form.text_field :term, class: 'input-field' %>
+  </div>
 
-    <div class="actions">
-      <%= form.submit '追加する', class: 'submit-button' %>
-    </div>
+  <div class="field">
+    <%= form.label :definition, '定義' %>
+    <%= form.text_area :definition, class: 'input-field' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image, '画像' %>
+    <%= form.file_field :image, class: 'input-field' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit '追加する', class: 'submit-button' %>
   </div>
 <% end %>

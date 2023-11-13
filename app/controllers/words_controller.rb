@@ -76,9 +76,15 @@ class WordsController < ApplicationController
     @word = Word.find(params[:id])
   end
 
-  def word_params
-    params.require(:word).permit(:term, :definition)
-  end
+  # app/controllers/words_controller.rb
+
+private
+
+def word_params
+  params.require(:word).permit(:term, :definition, :image)
+end
+
+  
 
   def comment_params
     params.require(:comment).permit(:content)

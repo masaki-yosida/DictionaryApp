@@ -1,6 +1,9 @@
 <!-- app/views/words/show.html.erb -->
+<!-- app/views/words/show.html.erb -->
+
 <h1><%= @word.term %></h1>
 <p><%= @word.definition %></p>
+<%= image_tag @word.image if @word.image.attached? %>
 
 <h2>コメント</h2>
 <ul>
